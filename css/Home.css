@@ -1,0 +1,116 @@
+.rotulo_sessao{
+    width: 100%;
+    margin-top: 3rem;
+}
+hr{
+    border-color: var(--cor-base-3);
+}
+.produto-item{
+    max-width: 90vw;
+    margin-left: 1vw;
+    font: 3rem Roboto;
+    background: var(--background-default);
+    margin-bottom: 3rem;
+    border-radius: 20px;
+    padding-top: 1rem;
+}
+.produto-item .topo-bloco{
+    font-size: 3rem;
+    border-bottom: 1px solid var(--pink);
+}
+.produto-item .topo-bloco p{
+    font-size: 1.3rem;
+}
+
+.conteudo-bloco{
+    align-items: center;
+    justify-content: center;
+    /* display: flex; */
+    padding-top: 1.5rem;
+}
+
+.conteudo-bloco .img-bloco{
+    display: flex;
+    max-width: 50vw;
+    margin-left:15vw;
+    align-items: center;
+    justify-content: center;
+}
+.texto-bloco{
+    width: 85vw;
+    text-align: center;
+    font-size: 2rem;
+    color: var(--text-color);
+    line-height: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.rodape{
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.5rem;
+    margin-top: 1rem;
+    margin-bottom: .5rem;
+    padding-bottom: 1rem;
+}
+
+.rodape .valor-produto{
+    margin-top: 1rem;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    height: 10vh;
+    width: 50vw;
+    font-size: 1.5rem;
+}
+
+.rodape .chamar-whatsapp{
+    text-align: center;
+    width: 50vw;
+    padding: 1rem;
+    border-radius: 10px;
+    color: var(--white);
+    transition: .1s;
+    background: var(--cor-base-3);
+}
+.rodape .chamar-whatsapp:hover{
+    color: var(--cor-base-3);
+    background: var(--button-color);
+    border: 1px solid var(--cor-base-3);
+}
+
+@media (min-width: 990px){
+    .produto-item{
+        max-width: 30vw;
+        margin-left: 1.7vw;
+        font: 1rem Roboto!important;
+        background: var(--background-default);
+        margin-bottom: 3rem;
+        border-radius: 20px;
+        padding-top: 1rem;
+        float: left;
+        min-height: 450px;
+    }
+
+    .produto-item .conteudo-bloco{
+        min-height: 300px;
+        font-size: .3rem!important;
+    }
+
+    .produto-item .conteudo-bloco .img-bloco{
+        width: 20vw;
+        margin-left: 5vw;
+    }
+
+    .produto-item .conteudo-bloco .texto-bloco{
+        width: 100%;
+        min-height: 175px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+
+}

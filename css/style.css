@@ -1,0 +1,96 @@
+html{
+    /* Cores bases */
+    --cor-base-1: #e83e8c;
+    --cor-base-2: #cf2072;
+    --cor-base-3: #FF3399;
+
+    --background-gradient: linear-gradient(to right, rgba(0,0,0,.3), rgba(0,0,0,0.1));
+    --background-gradient-reverse: linear-gradient(to right, rgba(0,0,0,0.1), rgba(0,0,0,.3));
+    --background-default: rgba(255,255,255,1);
+
+    --backgound-color: #f7f7f7;
+
+    --text-color: var(--cor-base-3);
+    --border-color-hover: var(--cor-base-3);
+
+    --border-color: #f7f7f7;
+    --button-color: #f7f7f7;
+    
+    --button-background-color: var(--cor-base-3);
+    --button-background-hover: var(--backgound-color);
+
+    --button-color-hover: var(--cor-base-3);
+}
+body{
+    background: var(--backgound-color);
+}
+*{
+    font-size: 80%;
+    font-family: Roboto;
+}
+input, button{
+    font-family: Roboto;
+    font-size: 1.6rem!important;
+    border: none;
+    background: var(--cor-base-3);
+}
+
+.navbar a{
+    color: var(--white)!important;
+    font-size: 1.6rem;
+    transition: .1s;
+    margin-left: .2rem;
+    padding-left: .5rem;
+    border-bottom: 1px solid var(--border-color-hover);
+}
+.navbar a.nav-link{
+    padding-left: .5rem;
+}
+.navbar a.nav-link:hover {
+    background: var(--white);
+    color: var(--cor-base-3)!important;
+    border-bottom: 1px solid var(--cor-base-3);
+}
+div.dropdown-menu a.dropdown-item{
+    margin-left: 0;
+    padding-left: 1.6rem;
+    background-color: var(--cor-base-3)!important;
+}
+div.dropdown-menu a.dropdown-item:hover{
+    background-color: var(--white)!important;
+    color: var(--cor-base-3)!important;
+}
+.navbar, .dropdown-menu{
+    padding: 0;
+    background: var(--cor-base-3)!important;
+}
+.navbar-toggler{
+    font-size: 1.6rem;
+    background: var(--white);
+    color: var(--cor-base-3)!important;
+}
+
+form{
+    padding-left: .8rem;
+    padding-right: .8rem;
+}
+
+form button{
+    background-color: var(--white)!important;
+    color: var(--cor-base-3)!important;
+    border-bottom: 1px outset var(--white)!important;
+}
+form button:hover{
+    border-bottom: 1px outset var(--cor-base-3)!important;
+}
+#form-buscar{
+    color: var(--cor-base-3)!important;
+}
+#form-buscar:focus{
+    border: 1px outset var(--cor-base-3);
+}
+
+footer.footer{
+    width: 100vh;
+    padding: 1rem ;
+}
