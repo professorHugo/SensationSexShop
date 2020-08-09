@@ -1,0 +1,109 @@
+:root{
+    font-size: 80%;
+
+    --color1: rgba(255,51,153,1);
+    --color2: rgba(0,0,0,1);
+    --color3: rgba(255,255,255,1);
+
+    --color-background: #F0F0F7;
+    --background-low-opacity: rgba(255,51,153,.5);
+    
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html, body, #root{
+    height: 100vh;
+}
+body{
+    background: var(--color2);
+}
+span{
+    color: var(--color1);
+}
+.btn-confirm{
+    background: var(--color1);
+    color: var(--color3);
+    border: none;
+}
+.btn-cancel{
+    background: var(--color2);
+    color: var(--color3);
+}
+#root{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+body, input, button, textarea{
+    color: var(--color1);
+    font: 500 1.4rem Poppins;
+}
+.fieldset{
+    background: var(--color-background);
+    padding: 1rem;
+    color: var(--color1);
+    width: 60vw;
+}
+.fieldset .caption{
+    position: relative;
+    top: -15px;
+    left: -1rem;
+    width: 60vw;
+    padding: 5px 0;
+    color: var(--color3);
+    background: var(--color1);
+    text-align: center;
+}
+.footer-form{
+    width: 100%;
+    display: flex;
+    align-self: center;
+    justify-content: space-around;
+}
+
+.footer-form button, .footer-form a{
+    background: var(--color3);
+    width: 25vw;
+    border: 0;
+    font-size: 1.6rem;
+    color: var(--color1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.logo{
+    max-height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.logo img{
+    max-height: 150px;
+}
+
+.forgot-password{
+    width: 100%;
+}
+
+#RecuperarSenha{
+    margin-top: 17%;
+}
+
+@media (min-width: 991px){
+    fieldset{
+        width: 40vw;
+    }
+    .footer-form{
+        width: 90%;
+        margin-left: 3%;
+    }
+    .footer-form button, .footer-form a{
+        width: 45%;
+        
+    }
+}
