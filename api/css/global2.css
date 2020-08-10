@@ -1,0 +1,188 @@
+:root{
+    font-size: 60%;
+
+    --color-background: #000000;
+
+    --color-primary: #F39;
+    --color-secundary: #850042;
+    --color-background-opacity: rgba(133,0,68,0.3);
+
+    --color-title-in-primary: #cacaca;
+    --color-text-in-primary: #cacaca;
+
+    --color-text-title: #fff;
+    --color-text-complement: #9C98A6;
+
+    --color-text-base: #bbb;
+
+    --color-input-background: var(--color-secundary);
+    --color-button-text: #ccc;
+
+    --color-box-base: #bbb;
+    --color-box-footer: var(--color-secundary);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body, #root{
+    height: 100vh;
+}
+
+body{ background: var(--color-background); color: var(--color-text-base);}
+
+#root{
+    height: 100vh;
+    align-items: center;
+    justify-content: stretch;
+    
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 15vw 1fr;
+    grid-template-areas: 
+        "topo topo"
+        "asside-menu container"
+        "footer footer"
+    ;
+}
+
+body, input, button, textarea{
+    font: 500 1.6rem Poppins;
+    color: var(--color-text-base);
+    overflow-x: hidden;
+}
+
+#top{
+    width: 100vw;
+    position: relative;
+    top: 5px;
+    background: var(--color-secundary);
+    display: flex;
+    justify-content: space-between;
+    padding-left: 25px;
+    padding-right: 25px;
+    font: 800 2rem Archivo;
+    min-height: 5vh;
+    grid-area: topo;
+}
+#top .left-top-menu{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-decoration: none;
+}
+#top .left-top-menu a{
+    color: var(--color-text-title);
+}
+#top .menu-button{
+    margin-left: 25px;
+    background: var(--color-secundary);
+}
+#top .menu-button button,
+#top .user-access button{
+    background: var(--color-secundary);
+    border: 0;
+    font-size: 3rem;
+}
+
+#top .user-options {
+    /* display: none; */
+    right: 0;
+    width: 230px;
+    position: absolute;
+    background: var(--color-secundary);
+    padding: 5px;
+}
+#top .user-options .box-base{
+    display: inline-block;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    background-color: var(--color-box-base);
+    height: 100px;
+    border-radius: 10px;
+}
+#top .user-options .box-base button{
+    text-align: left;
+    padding: 9px 51px;
+    background: none;
+    border: none;
+    color: var(--color-secundary);
+}
+
+
+#asside-menu {
+    width: 225px;
+    background: var(--color-background-opacity);
+    position: relative;
+    top: 10px;
+    min-height: 90vh;
+    max-height: 750px;
+    font: 800 2rem Roboto!important;
+    display: block;
+    padding-left: 25px;
+    grid-area: asside-menu;
+    max-width: 15vw;
+}
+#asside-menu .btn-group a,
+#asside-menu .btn-group button{
+    margin-top: 1rem;
+    font: 400 2rem Roboto;
+    color: var(--color-text-title);
+    background: unset;
+    border: unset;
+}
+#asside-menu .bloco-dropdown{
+    padding: 5px;
+    min-width: 220px;
+}
+#asside-menu .bloco-dropdown a{
+    color: var(--color-secundary)!important;
+    display: block;
+    margin-top: 0;
+}
+
+.container{
+    grid-area: container;
+    display: grid;
+    justify-content: center;
+    grid-template-rows: 80px 2fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas: 
+        "titulo titulo titulo"
+        "item item item"
+        "item item item"
+    ;
+}
+
+.container .titulo-pagina{
+    grid-area: titulo;
+}
+.container .titulo-pagina p{
+    background-color: var(--color-background-opacity);
+    padding: 10px 25px;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+
+
+
+
+#footer{
+    grid-area: footer;
+    padding:15px 25px 5px;
+    background-color: var(--color-background-opacity);
+    position: relative;
+    top: 5px;
+    min-width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#footer .dev img{
+    max-height: 25px;
+}

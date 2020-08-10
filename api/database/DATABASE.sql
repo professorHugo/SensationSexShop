@@ -13,11 +13,12 @@ INSERT INTO auth_senhas(md5_senha)VALUES('eb0a191797624dd3a48fa681d3061212');
 CREATE TABLE tb_usuarios(
     id_usuario int not null PRIMARY KEY auto_increment,
     email_usuario varchar(100) NOT NULL,
+    nome_usuario VARCHAR(100) NOT NULL,
     senha_usuario int NOT NULL,
 
     FOREIGN KEY(senha_usuario) REFERENCES auth_senhas(id_senha)
 )ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
-INSERT INTO tb_usuarios(email_usuario,senha_usuario)VALUES('master@sensationsexyshop.com.br',1);
+INSERT INTO tb_usuarios(email_usuario,nome_usuario,senha_usuario)VALUES('master@sensationsexyshop.com.br','Master',1);
 
 CREATE TABLE tb_categorias(
     id_categoria int not null primary key auto_increment,

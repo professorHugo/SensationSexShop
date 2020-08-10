@@ -94,6 +94,11 @@ body, input, button, textarea{
     margin-top: 17%;
 }
 
+.button-primary{
+    background-color: var(--color1);
+    color: var(--color3);
+}
+
 @media (min-width: 991px){
     fieldset{
         width: 40vw;
