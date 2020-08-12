@@ -9,8 +9,7 @@
                 Categorias
             </a>
             <div class="dropdown-menu bloco-dropdown">
-                <a href="?Pagina=Categorias&Ver">Ver Categorias</a>
-                <a href="?Pagina=Categorias&Cadastrar">Cadastrar Categorias</a>
+                <a href="?Pagina=Categorias">Ver Categorias</a>
             </div>
         </div>
         <!-- Default dropright button -->
@@ -31,8 +30,7 @@
                 Fornecedores
             </a>
             <div class="dropdown-menu bloco-dropdown">
-                <a href="?Pagina=Fornecedores&Cadastrar">Ver Fornecedores</a>
-                <a href="?Pagina=Fornecedores&Cadastrar">Cadastrar Fornecedores</a>
+                <a href="?Pagina=Fornecedores">Ver Fornecedores</a>
             </div>
         </div>
 

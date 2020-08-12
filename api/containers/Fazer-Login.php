@@ -25,5 +25,5 @@
     }else{
         
     }
-
 ?>
+<meta name="refresh" content="index.php">

@@ -55,6 +55,26 @@ body, input, button, textarea{
     overflow-x: hidden;
 }
 
+.btn.btn-form{
+    background: var(--color-box-base);
+    color: var(--color-secundary);
+    transition: .2s;
+}
+.btn.btn-form:hover{
+    background-color: var(--color-secundary);
+    color: var(--color-text-base);
+    border-color: var(--color-text-base);
+}
+.btn.btn-form.btn-form-cancelar{
+    background-color: var(--color-secundary);
+    color: var(--color-text-base);
+    border-color: var(--color-text-base);
+}
+.btn.btn-form.btn-form-cancelar:hover{
+    background-color: var(--color-box-base);
+    color: var(--color-secundary);
+}
+
 #top{
     width: 100vw;
     position: relative;
@@ -93,6 +113,7 @@ body, input, button, textarea{
     right: 0;
     width: 230px;
     position: absolute;
+    z-index: 999;
     background: var(--color-secundary);
     padding: 5px;
 }
@@ -118,9 +139,10 @@ body, input, button, textarea{
     width: 225px;
     background: var(--color-background-opacity);
     position: relative;
-    top: 10px;
-    min-height: 90vh;
-    max-height: 750px;
+    margin-bottom: -5px;
+    padding-top: 10px;
+    min-height: 91vh;
+    /* max-height: 750px; */
     font: 800 2rem Roboto!important;
     display: block;
     padding-left: 25px;
@@ -150,11 +172,11 @@ body, input, button, textarea{
     display: grid;
     justify-content: center;
     grid-template-rows: 80px 2fr;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-areas: 
-        "titulo titulo titulo"
-        "item item item"
-        "item item item"
+        "titulo titulo titulo titulo"
+        "item item item item"
+        "item item item item"
     ;
 }
 
@@ -162,10 +184,13 @@ body, input, button, textarea{
     grid-area: titulo;
 }
 .container .titulo-pagina p{
+    position: absolute;
+    width: 82.5%;
+    top: 55px;
+    z-index: 1;
     background-color: var(--color-background-opacity);
     padding: 10px 25px;
     border-radius: 5px;
-    margin-top: 20px;
 }
 
 

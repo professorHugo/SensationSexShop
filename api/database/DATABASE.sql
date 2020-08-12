@@ -20,32 +20,37 @@ CREATE TABLE tb_usuarios(
 )ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
 INSERT INTO tb_usuarios(email_usuario,nome_usuario,senha_usuario)VALUES('master@sensationsexyshop.com.br','Master',1);
 
-CREATE TABLE tb_categorias(
+CREATE TABLE tb_categoria_fotos(
     id_categoria int not null primary key auto_increment,
     nome_categoria varchar(50) DEFAULT NULL
+)ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
+INSERT INTO tb_categoria_fotos(nome_categoria)VALUES('Produtos'),('Banners');
+
+CREATE TABLE tb_categoria_produtos(
+    id_categoria int not null primary key auto_increment,
+    nome_categoria varchar(50) DEFAULT NULL
+)ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
+INSERT INTO tb_categoria_fotos(nome_categoria)VALUES('Teste');
+
+
+CREATE TABLE tb_fornecedores(
+    id_fornecedor int not null PRIMARY KEY auto_increment,
+    nome_fornecedor VARCHAR(50)
 )ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
 
 CREATE TABLE tb_fotos(
     id_foto int not null PRIMARY KEY auto_increment,
     categoria_foto int DEFAULT NULL,
-    pasta_foto int DEFAULT NULL,
+    pasta_foto VARCHAR(25) DEFAULT NULL,
     arquivo_foto varchar(100) DEFAULT NULL,
 
-    FOREIGN KEY(categoria_foto)REFERENCES tb_categorias(id_categoria),
-    FOREIGN KEY(pasta_foto) REFERENCES tb_categorias(id_categoria)
+    FOREIGN KEY(categoria_foto)REFERENCES tb_categoria_fotos(id_categoria)
 )ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
+INSERT INTO tb_fotos(arquivo_foto)VALUES('image.jpg');
 
-CREATE TABLE tb_titulos_produtos(
-    id_titulo int not null PRIMARY KEY auto_increment,
-    categoria_titulo int DEFAULT NULL,
-    texto_titulo VARCHAR(50) DEFAULT NULL,
-
-    FOREIGN KEY(categoria_titulo) REFERENCES tb_categorias(id_categoria)
-)ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
-
-CREATE TABLE tb_fornecedores(
-    id_fornecedor int not null PRIMARY KEY auto_increment,
-    nome_fornecedor VARCHAR(50)
+CREATE TABLE tb_marcas(
+    id_marca int not null PRIMARY KEY auto_increment,
+    nome_marca VARCHAR(50) DEFAULT NULL
 )ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
 
 CREATE TABLE tb_descricao(
@@ -61,24 +66,20 @@ CREATE TABLE tb_preco(
 CREATE TABLE tb_produtos(
     id_produto int not null PRIMARY KEY auto_increment,
     categoria_produto int DEFAULT NULL,
-    titulo_produto int DEFAULT NULL,
+    marca_produto int DEFAULT NULL,
+    titulo_produto VARCHAR(100) DEFAULT NULL,
     fornecedor_produto int DEFAULT NULL,
-    foto_produto int DEFAULT NULL,
-    descricao_produto int DEFAULT NULL,
-    preco_produto int DEFAULT NULL,
+    foto_produto int DEFAULT 1,
+    descricao_produto VARCHAR(500) DEFAULT NULL,
+    preco_produto FLOAT DEFAULT NULL,
 
     INDEX(categoria_produto),
-    INDEX(titulo_produto),
     INDEX(foto_produto),
-    INDEX(descricao_produto),
-    INDEX(preco_produto),
+    INDEX(marca_produto),
 
-    FOREIGN KEY(categoria_produto) REFERENCES tb_categorias(id_categoria),
-    FOREIGN KEY(titulo_produto) REFERENCES tb_titulos_produtos(id_titulo),
-    FOREIGN KEY(foto_produto) REFERENCES tb_fotos(id_foto),
-    FOREIGN KEY(descricao_produto) REFERENCES tb_descricao(id_descricao),
-    FOREIGN KEY(preco_produto) REFERENCES tb_preco(id_preco)
-
+    FOREIGN KEY(categoria_produto) REFERENCES tb_categoria_produtos(id_categoria),
+    FOREIGN KEY(marca_produto) REFERENCES tb_marcas(id_marca),
+    FOREIGN KEY(foto_produto) REFERENCES tb_fotos(id_foto)
 )ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
 
 CREATE TABLE tb_banners(
@@ -86,5 +87,6 @@ CREATE TABLE tb_banners(
     titulo_banner varchar(50) DEFAULT "Banner",
     alt_banner varchar(50) DEFAULT "Banner",
     pasta_banner VARCHAR(50) DEFAULT "Banner",
-    arquivo_banner VARCHAR(50) DEFAULT NULL
+    arquivo_banner VARCHAR(50) DEFAULT NULL,
+    ativo_banner int DEFAULT 0
 )ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;

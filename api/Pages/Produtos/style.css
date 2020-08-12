@@ -1,0 +1,81 @@
+.bloco-item{
+    width: 80vw;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 25px;
+    margin-left: 8px;
+    margin-top: 0px;
+    background-color: var(--color-secundary);
+    grid-area: auto;
+}
+.bloco-item.form{
+    max-height: 150px;
+}
+
+.bloco-item hr{
+    border-color: var(--color-button-text);
+}
+
+.bloco-item .form-container{
+    background-color: var(--color-box-base);
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+}
+.row.img-produto .col-12{
+    justify-content: center;
+    align-items: center;
+}
+
+.file {
+    width: 51vw;
+    margin-left: 1vw;
+    line-height: 30px;
+    height: 30px;
+    border: 1px solid #A7A7A7;
+    padding: 1.8rem!important;
+    box-sizing: border-box;
+    vertical-align: middle;
+}
+
+.form-container label,
+.form-container select,
+.form-container input,
+.form-container textarea{
+    color: var(--color-secundary);
+    font-size: 2rem;
+    border-color: var(--color-secundary);
+}
+.btn {
+    border: none;
+    box-sizing: border-box;
+    padding: 5px;
+    height: 3.8rem;
+    font-size: 15px;
+    overflow: hidden;
+}
+.btn-cadastrar {
+    background-color: var(--color-secundary);
+    color: #FFF!important;
+}
+.btn-cancelar{
+    background-color: var(--color-text-title);
+    color: var(--color-secundary);
+}
+.arquivo {
+    display: none;
+}
+
+.form-container label:focus,
+.form-container select:focus,
+.form-container input:focus,
+.form-container textarea:focus{
+    border-color: var(--color-primary);
+    border-bottom-color: 1px outset var(--color-text-title);
+}
+
+.row.rodape-form-produtos{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}

@@ -1,8 +1,10 @@
 .bloco-item{
-    width: 26vw;
+    width: 19vw;
     padding: 15px;
     border-radius: 5px;
     margin-bottom: 25px;
+    margin-left: 8px;
+    margin-top: 10px;
     background-color: var(--color-secundary);
 }
 .bloco-item article{
@@ -12,12 +14,12 @@
 }
 .bloco-item article .icone{
     width: 30%;
-    font-size: 10rem;
+    font-size: 7rem;
     position: relative;
 }
 .bloco-item article .quantidade{
     width: 70%;
-    font-size: 6rem;
+    font-size: 4rem;
     text-align: right;
     position: relative;
     top: 15px;

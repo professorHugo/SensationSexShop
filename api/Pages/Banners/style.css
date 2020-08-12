@@ -1,0 +1,88 @@
+.bloco-item{
+    width: 81.5vw;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 25px;
+    margin-left: 0;
+    margin-top: 0px;
+    background-color: var(--color-box-base);
+    grid-area: auto;
+}
+.bloco-item form .form-group{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.bloco-item form label{
+    color: var(--color-secundary)!important;
+    font-size: 2rem;
+}
+.bloco-item input[type="file"]{
+    height: 50px;
+    padding-top: 10px;
+}
+.bloco-item button{
+    background: var(--color-secundary);
+    border: 0;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.bloco-item form .row .check{
+    margin-top: 5px;
+}
+.color{
+    color: var(--color-secundary);
+}
+
+.img-produto .btn.btn-form.btn-form-cancelar{
+    font-size: 1.6rem;
+    border-radius: 5px;
+    padding: .7rem;
+}
+#Alert,#Banner-Alterado {
+    padding: 2rem;
+    background-color: var(--color-background-opacity);
+    display: block;
+    color: var(--color-secundary);
+}
+#Alert .modal-dialog,
+#Banner-Alterado .modal-dialog{
+    margin-top: 12%;
+}
+#Alert button,
+#Banner-Alterado button{
+    background-color: var(--color-secundary)!important;
+    color: var(--color-text-base)!important;
+    border-color: var(--color-text-base)!important;
+    border: 0;
+    padding: 5px;
+    border-radius: 5px;
+}
+#Alert .code
+#Banner-Alterado .code{
+    padding: 8px;
+    color: var(--color-secundary);
+}
+#Alert .text-content,
+#Banner-Alterado .text-content{
+    padding: 2rem;
+}
+
+
+.file {
+    width: 70%;
+    margin-left: 1vw;
+    line-height: 30px;
+    height: 30px;
+    border: 1px solid #A7A7A7;
+    padding: 1.8rem!important;
+    box-sizing: border-box;
+    vertical-align: middle;
+    border-radius: 5px;
+    color: var(--color-secundary);
+}
+
+.arquivo {
+    display: none;
+}

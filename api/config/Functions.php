@@ -18,6 +18,16 @@ function Resumo($string, $words = '35') {
     }
 }
 
+/********************
+ * Excluir arquivos
+ *******************/
+function excluirArquivos($Arqivo){
+    if( file_exists($Arqivo) ){
+        unlink ( $Arqivo );
+        return $Arqivo;
+    }
+}
+
 /* * ***************************
   FORMATAR DATA
  * *************************** */

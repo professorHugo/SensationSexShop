@@ -16,9 +16,9 @@ if($connection){
 
 /* Deployed 
 $HOST   = 'localhost';
-$USER   = 'n2yco435_c2';
-$PASS   = '8M6HJLM(md#EA+#k%{';
-$DBA    = 'c2assessoria';
+$USER   = 'n2yco435_sexshop';
+$PASS   = 'FZ2x&s!98MX0';
+$DBA    = 'n2yco435_sensationss';
 
 $connection = mysqli_connect($HOST, $USER, $PASS, $DBA);
 
