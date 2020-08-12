@@ -6,6 +6,7 @@ if(isset($_GET['Item'])){
     "<br>".$Preco = $_POST['preco_produto'];
     "<br>".$Imagem = $_FILES['imagem_produto']['name'];
     "<br>".$Descricao = $_POST['descricao_produto'];
+    "<br>".$Marca = $_POST['marca_produto'];
     
     //Upload da imagem
     include_once "Produtos/container/Upload.php";
@@ -16,13 +17,15 @@ if(isset($_GET['Item'])){
             categoria_produto,
             titulo_produto,
             descricao_produto,
-            preco_produto                
+            preco_produto,
+            marca_produto              
         )VALUES(
             '$Fornecedor',
             '$Categoria',
             '$Titulo',
             '$Descricao',
-            '$Preco'
+            '$Preco',
+            '$Marca'
         )
     ";
     $ExeQrCadastrarProduto = mysqli_query($connection, $QueryCadastrarProduto);
@@ -49,7 +52,7 @@ if(isset($_GET['Item'])){
             }
         }
     }else{
-            "<br>Erro: ".mysqli_error($connection);
+            echo "<br>Erro: ".mysqli_error($connection);
     }
 
     include_once "Produtos/container/Modal-Produto-Cadastrado.php";

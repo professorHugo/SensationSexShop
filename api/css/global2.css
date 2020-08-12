@@ -1,11 +1,12 @@
 :root{
     font-size: 60%;
 
-    --color-background: #000000;
+    --color-background: rgba(255,255,255,.8);
 
     --color-primary: #F39;
     --color-secundary: #850042;
-    --color-background-opacity: rgba(133,0,68,0.3);
+    --color-secundary-opacity: rgba(255,51,153,0.1);
+    --color-background-opacity: #000;
 
     --color-title-in-primary: #cacaca;
     --color-text-in-primary: #cacaca;
@@ -134,14 +135,14 @@ body, input, button, textarea{
     color: var(--color-secundary);
 }
 
-
 #asside-menu {
     width: 225px;
     background: var(--color-background-opacity);
     position: relative;
     margin-bottom: -5px;
+    margin-top: 1.5vh;
     padding-top: 10px;
-    min-height: 91vh;
+    min-height: 90vh;
     /* max-height: 750px; */
     font: 800 2rem Roboto!important;
     display: block;
@@ -200,7 +201,7 @@ body, input, button, textarea{
 #footer{
     grid-area: footer;
     padding:15px 25px 5px;
-    background-color: var(--color-background-opacity);
+    background-color: var(--color-secundary);
     position: relative;
     top: 5px;
     min-width: 100vw;

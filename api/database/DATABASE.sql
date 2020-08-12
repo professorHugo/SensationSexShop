@@ -71,7 +71,10 @@ CREATE TABLE tb_produtos(
     fornecedor_produto int DEFAULT NULL,
     foto_produto int DEFAULT 1,
     descricao_produto VARCHAR(500) DEFAULT NULL,
-    preco_produto FLOAT DEFAULT NULL,
+    preco_produto VARCHAR(10) DEFAULT NULL,
+    qtd_produto int DEFAULT 0,
+    status_produto int DEFAULT 0,
+
 
     INDEX(categoria_produto),
     INDEX(foto_produto),

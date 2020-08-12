@@ -84,7 +84,7 @@
             </div>
             <div class="col-4">
                 <label for="marca_produto" class="form-label form-label-lg">Marca:</label>
-                <select name="categoria" id="categoria" class="form-control form-control-lg" required>
+                <select name="marca_produto" id="marca_produto" class="form-control form-control-lg" required>
                     <option value="" disabled selected>Selecione a Marca</option>
                     
                     <?php

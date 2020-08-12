@@ -1,33 +1,58 @@
-<a class="navbar-brand name" href="#">Sensation</a>
+<a class="navbar-brand name" href="#">
+    <?php echo SITENAME ?>
+</a>
 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
 </button>
 
 <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-    <li class="nav-item active">
-        <a class="nav-link" href="#">Inicio <span class="sr-only">(current)</span></a>
+    <li 
+        <?php if( $_GET['L'] == "Home" ){ echo 'class="nav-item active"'; }else{ echo 'class="nav-item"';}?>
+    >
+        <a class="nav-link" href="?L=Home">Inicio <span class="sr-only">(current)</span></a>
     </li>
-    <li class="nav-item">
-        <a class="nav-link" href="#">Novidades</a>
+    <li 
+    <?php if( $_GET['L'] == "Novidades" ){ echo 'class="nav-item active"'; }else{ echo 'class="nav-item"';}?>
+    >
+        <a class="nav-link" href="?L=Novidades">Novidades</a>
     </li>
-    <li class="nav-item">
-        <a class="nav-link" href="#">Hot (Mais comprados)</a>
+    <li 
+    <?php if( $_GET['L'] == "All" && isset($_GET['H']) ){ echo 'class="nav-item active"'; }else{ echo 'class="nav-item"';}?>
+    
+    >
+        <a class="nav-link" href="?L=All&H">Todos</a>
+    </li>
+    <li 
+    <?php if( $_GET['L'] == "Hot" ){ echo 'class="nav-item active"'; }else{ echo 'class="nav-item"';}?>
+    >
+        <a class="nav-link" href="?L=Hot">Hot (Mais comprados)</a>
     </li>
     <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Categorias
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Gel Funcional</a>
-            <a class="dropdown-item" href="#">Gel Comestível</a>
-            <!-- <div class="dropdown-divider"></div> -->
-            <a class="dropdown-item" href="#">Óleo de Massagem</a>
-            <a class="dropdown-item" href="#">Energéticos</a>
-            <a class="dropdown-item" href="#">Plug Anal</a>
-            <a class="dropdown-item" href="#">Vibradores</a>
-            <a class="dropdown-item" href="#">Lingeries</a>
-            <a class="dropdown-item" href="#">Sado | Fetiche</a>
+        <?php
+        $QueryBuscarCategorias = "SELECT * FROM tb_categoria_produtos";
+        $ExeQrBuscarCategorias = mysqli_query($connection, $QueryBuscarCategorias);
+
+        if( mysqli_num_rows($ExeQrBuscarCategorias) > 0 ){
+            while($ReturnCategorias = mysqli_fetch_assoc($ExeQrBuscarCategorias)){
+            ?>
+            <a class="dropdown-item" href="#">
+                <?php echo $ReturnCategorias['nome_categoria'] ?>
+            </a>
+            <?php
+            }
+        }else{
+            ?>
+            <a class="dropdown-item" href="#">
+                Categorias Não Cadastradas
+            </a>
+            <?php
+        }
+        ?>
         </div>
     </li>
     

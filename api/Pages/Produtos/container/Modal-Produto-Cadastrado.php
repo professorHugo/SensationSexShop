@@ -9,7 +9,7 @@
 <div class="modal-dialog">
     <div class="modal-content">
     <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Cadastro de Marcas</h5>
+        <h5 class="modal-title" id="staticBackdropLabel">Cadastro de Produto</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">&times;</span>
         </button>
@@ -19,8 +19,8 @@
             <img src="../img/ajax-loader.gif">
             </div>
             <div class="col-md-12 text-center">
-            <p>Cadastrando a Marca...</p>
-            <p>Categoria Informada: <?php echo $NomeMarca ?></p>
+            <p>Cadastrando o Produto...</p>
+            <p>Produto Informado: <?php echo $Titulo ?></p>
             </div>
         </div>
     <div class="modal-footer">

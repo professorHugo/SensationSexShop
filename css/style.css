@@ -34,6 +34,10 @@ input, button{
     border: none;
     background: var(--cor-base-3);
 }
+li.active a{
+    padding-bottom: -3px;
+    border-bottom: 3px solid var(--border-color);
+}
 
 .navbar a{
     color: var(--white)!important;
@@ -49,7 +53,7 @@ input, button{
 .navbar a.nav-link:hover {
     background: var(--white);
     color: var(--cor-base-3)!important;
-    border-bottom: 1px solid var(--cor-base-3);
+    border-bottom: 3px solid var(--cor-base-3);
 }
 div.dropdown-menu a.dropdown-item{
     margin-left: 0;
