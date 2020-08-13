@@ -18,7 +18,7 @@ CREATE TABLE tb_usuarios(
 
     FOREIGN KEY(senha_usuario) REFERENCES auth_senhas(id_senha)
 )ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
-INSERT INTO tb_usuarios(email_usuario,nome_usuario,senha_usuario)VALUES('master@sensationsexyshop.com.br','Master',1);
+INSERT INTO tb_usuarios(email_usuario,nome_usuario,senha_usuario)VALUES('master@sensationsexshop.com.br','Master',1);
 
 CREATE TABLE tb_categoria_fotos(
     id_categoria int not null primary key auto_increment,
@@ -30,8 +30,16 @@ CREATE TABLE tb_categoria_produtos(
     id_categoria int not null primary key auto_increment,
     nome_categoria varchar(50) DEFAULT NULL
 )ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
-INSERT INTO tb_categoria_fotos(nome_categoria)VALUES('Teste');
-
+-- INSERT INTO tb_categoria_fotos(nome_categoria)VALUES('Teste');
+-- INSERT INTO tb_categoria_produtos (id_categoria, nome_categoria) VALUES
+-- (1, 'Gel Funcional'),
+-- (2, 'Gel ComestÃ­vel'),
+-- (3, 'Ã“leo de Massagem'),
+-- (4, 'EnergÃ©ticos'),
+-- (5, 'Plug Anal'),
+-- (6, 'Vibradores'),
+-- (7, 'Lingeries'),
+-- (8, 'Sado & Fetiche');
 
 CREATE TABLE tb_fornecedores(
     id_fornecedor int not null PRIMARY KEY auto_increment,
@@ -52,16 +60,23 @@ CREATE TABLE tb_marcas(
     id_marca int not null PRIMARY KEY auto_increment,
     nome_marca VARCHAR(50) DEFAULT NULL
 )ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
-
-CREATE TABLE tb_descricao(
-    id_descricao int not null PRIMARY KEY auto_increment,
-    texto_descricao varchar(500) DEFAULT NULL
-)ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
-
-CREATE TABLE tb_preco(
-    id_preco int not null PRIMARY KEY auto_increment,
-    valor_preco FLOAT DEFAULT NULL
-)ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
+-- INSERT INTO tb_marcas (id_marca, nome_marca) VALUES
+-- (1, 'Soft Love'),
+-- (2, 'Pessini'),
+-- (3, 'INTT'),
+-- (4, 'Hot Flowers'),
+-- (5, 'Secret Love'),
+-- (6, 'Garji'),
+-- (7, 'Pepper Blend'),
+-- (8, 'La Pimenta'),
+-- (9, 'CIMED'),
+-- (10, 'Noru'),
+-- (11, 'FeitiÃ§os'),
+-- (12, 'Loka SensaÃ§Ã£o'),
+-- (13, 'Pau Brasil'),
+-- (14, 'Sexy Fantasy'),
+-- (15, 'YouVibe'),
+-- (16, 'VipMix');
 
 CREATE TABLE tb_produtos(
     id_produto int not null PRIMARY KEY auto_increment,
@@ -74,6 +89,8 @@ CREATE TABLE tb_produtos(
     preco_produto VARCHAR(10) DEFAULT NULL,
     qtd_produto int DEFAULT 0,
     status_produto int DEFAULT 0,
+    hot_produto int DEFAULT 0,
+    novidade_produto int DEFAULT 0,
 
 
     INDEX(categoria_produto),
@@ -93,3 +110,60 @@ CREATE TABLE tb_banners(
     arquivo_banner VARCHAR(50) DEFAULT NULL,
     ativo_banner int DEFAULT 0
 )ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
+
+----------------------------
+--  Inserção de Dados Dev --
+--   Comentar para Prod   --
+----------------------------
+INSERT INTO tb_categoria_produtos (
+    id_categoria, 
+    nome_categoria
+) 
+VALUES
+(1, 'Gel Funcional'),
+(2, 'Gel ComestÃ­vel'),
+(3, 'Ã“leo de Massagem'),
+(4, 'EnergÃ©ticos'),
+(5, 'Plug Anal'),
+(6, 'Vibradores'),
+(7, 'Lingeries'),
+(8, 'Sado & Fetiche');
+
+INSERT INTO tb_fotos (
+    id_foto, 
+    categoria_foto, 
+    pasta_foto, 
+    arquivo_foto
+)
+VALUES
+(1, NULL, NULL, 'image.jpg'),
+(2, 1, 'Produtos', '21912.jpg'),
+(3, 1, 'Produtos', '8662.png'),
+(4, 1, 'Produtos', '9478.png'),
+(5, 1, 'Produtos', '18375.png'),
+(6, 1, 'Produtos', '1378.jpg'),
+(7, 1, 'Produtos', '2962.png'),
+(8, 1, 'Produtos', '22259.png'),
+(9, 1, 'Produtos', '6499.png');
+
+INSERT INTO tb_produtos (
+    categoria_produto, 
+    marca_produto, 
+    titulo_produto, 
+    fornecedor_produto, 
+    foto_produto, 
+    descricao_produto, 
+    preco_produto,
+    qtd_produto, 
+    status_produto, 
+    hot
+)
+VALUES
+(1, 1, 'Facilit', 1, 2, 'ContÃ©m 3 unidades. Ã‰ uma bolinha funcional anestÃ©sica 4x1 sendo as funÃ§Ãµes, AnestÃ©sico, Lubrificante, Vasodilatador, Cicatrizante.', '12,20', 1, 1, 0),
+(2, 5, 'Gel Aromatizante', 1, 3, 'Sabores: Tequila e Gyn. Gel para massagem corporal comestÃ­vel que aquece e lubrifica. Ã‰ uma alternativa bem prazerosa para o sexo oral.', '12,50', 3, 1, 0),
+(3, 3, 'AtraÃ§Ã£o Fatal', 1, 4, 'teste', '69,90', 1, 1, 0),
+(4, 12, 'TesÃ£o de Vaca', 1, 5, 'teste', '12,50', 2, 1, 0),
+(5, 13, 'Plug Anal', 1, 6, 'Material: Metal.\r\nCores: Roxo e Azul.\r\nContÃ©m: 1un', '12,50', 5, 1, 0),
+(6, 15, 'Vibrador', 1, 7, 'Tamanho Aproximadamente: 22 x 3,3cm tamanho total, sendo 10 x 3cm penetrÃ¡veis. Vibrador Rotativo: especial feito em jelly macio com pÃ©rolas metÃ¡licas internas para estimulaÃ§Ã£o, possui rotaÃ§Ã£o com giro positivo e negativo, estimulador em formato bichinho com vibraÃ§Ã£o, as duas funÃ§Ãµes podem ser acionadas juntas ou separadamente, tudo regulado por botÃµes na base do vibrador.', '12,50', 5, 0, 0),
+(7, 16, 'Body Renda Floral', 1, 8, 'Cores: Branco e Preto. Ajusta-se facilmente do tamanho P ao G. Body Sexy Deliciosa. Ã‰ todo confeccionado em renda com estampa floral e com modelo fio dental, proporcionando uma silhueta impactante.', '25,30', 0, 0, 0),
+(8, 15, 'Kit Bondage (Couro)', 1, 9, 'Bracelete, Tornozeleira e Venda.', '83,70', 1, 0, 0);

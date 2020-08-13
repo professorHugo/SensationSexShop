@@ -126,7 +126,7 @@
         <hr>
         <div class="row img-produto">
             <div class="col-12">
-                <label for="imagem_produto" class="form-label form-label-lg">Imagem do Produto: </label>
+                <label for="imagem_produto" class="form-label form-label-lg" required="required" >Imagem do Produto: </label>
                 <input 
                     type="file" 
                     name="imagem_produto" 

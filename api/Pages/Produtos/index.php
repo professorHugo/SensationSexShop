@@ -10,9 +10,17 @@ if(isset($_GET['Pagina'])){
     </style>
     <?php
         include_once "Produtos/Cadastro.php";
-
     }else{
         include_once "Produtos/Visualizar.php";
     }
 }
+
+if(isset($_GET['Pagina'])){
+    if($_GET['Pagina'] == "Produtos" && isset($_GET['Ver']) && isset($_GET['Editar']) ){
+
+        include_once "Editar-Produto.php";
+
+    }
+}
+
 ?>

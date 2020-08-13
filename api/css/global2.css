@@ -6,7 +6,8 @@
     --color-primary: #F39;
     --color-secundary: #850042;
     --color-secundary-opacity: rgba(255,51,153,0.1);
-    --color-background-opacity: #000;
+    --color-background-opacity: rgba(0,0,0,1);
+    --color-background-opacity2: rgba(0,0,0,.9);
 
     --color-title-in-primary: #cacaca;
     --color-text-in-primary: #cacaca;

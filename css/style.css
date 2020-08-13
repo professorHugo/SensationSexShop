@@ -93,8 +93,53 @@ form button:hover{
 #form-buscar:focus{
     border: 1px outset var(--cor-base-3);
 }
-
 footer.footer{
-    width: 100vh;
-    padding: 1rem ;
+    width: 100%;
+    font: 400 1.8rem Roboto;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr;
+    grid-template-areas: "cliente cliente" "dev dev";
+    text-align: center;
+    background-color: var(--cor-base-1);
+    padding-top: 25px;
+    color: var(--backgound-color);
+
+}
+footer.footer p.texto-descricao-cliente{
+    grid-area: cliente;
+    width: 95%;
+    padding: 5px 15vw;
+}
+footer.footer p.texto-descricao-desenvolvedor{
+    grid-area: dev;
+    width: 95%;
+    text-align: center;
+}
+
+
+@media ( min-width: 991px ){
+    footer.footer{
+        width: 100%;
+        padding: 1rem 1rem 0;
+        font: 400 1.5rem Roboto;
+        display: grid;
+        grid-template-rows: 1fr;
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas: "cliente dev";
+        justify-content: center;
+        align-items: center;
+    }
+    footer.footer p.texto-descricao-cliente{
+        grid-area: cliente;
+        width: 45vw;
+        padding: 5px 0;
+        text-align: left;
+    }
+    footer.footer p.texto-descricao-desenvolvedor{
+        grid-area: dev;
+        width: 48.5vw;
+        padding: 5px 0 0;
+        text-align: right;
+    }
 }

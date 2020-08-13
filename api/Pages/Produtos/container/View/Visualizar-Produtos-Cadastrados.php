@@ -1,12 +1,12 @@
 <div id="exibir-produtos">
     <?php
     include_once "Query-Buscar-Produtos.php";
-
+    
     $ExeQrBuscarProdutos = mysqli_query($connection, $QueryBuscarProdutos);
     $RowQrBuscarProdutos = mysqli_num_rows($ExeQrBuscarProdutos);
 
     if($RowQrBuscarProdutos >= 1){
-        while($ReturnProdutos = mysqli_fetch_assoc($ExeQrBuscarProdutos)){
+        while( $ReturnProdutos = mysqli_fetch_assoc($ExeQrBuscarProdutos) ){
             "<br>Categoria: " . $NomeCategoria = $ReturnProdutos['nome_categoria'];
             "<br>Fornecedor: " . $NomeFornecedor = $ReturnProdutos['nome_fornecedor'];
             "<br>Produto: " . $NomeProduto = $ReturnProdutos['titulo_produto'];
@@ -16,7 +16,9 @@
             "<br>Preço: " . $PrecoProduto = $ReturnProdutos['preco_produto'];
             "<br>Quantidade: " . $QuantidadeProduto = $ReturnProdutos['qtd_produto'];
             "<br>Status: " . $StatusProduto = $ReturnProdutos['status_produto'];
-        ?>
+
+            ?>
+        
         <div class="produto-item">
             <div class="col-12 topo-item">
                 <header>
@@ -52,7 +54,7 @@
             </div>
             <div class="col-12 rodape">
                 <p class="valor-produto">
-                    R$ 12,20
+                    R$ <?php echo $PrecoProduto?>
                 </p>
                 <button 
                     type="button" 
@@ -66,9 +68,17 @@
             </div>
         </div>
         
-        <script type="text/javascript">
+        
+        <script>
             $(function(){
-                $("body").addClass('modal-open');
+                $('#btn<?php echo $ReturnProdutos['id_produto']?>').on('click', function() {
+                    $('#imagem_produto<?php echo $ReturnProdutos['id_produto']?>').trigger('click');
+                });
+
+                $('#imagem_produto<?php echo $ReturnProdutos['id_produto']?>').on('change', function() {
+                    var fileName = $(this)[0].files[0].name;
+                    $('#file<?php echo $ReturnProdutos['id_produto']?>').val(fileName);
+                });
             });
         </script>
 
@@ -81,12 +91,16 @@
             tabindex="-1" 
             aria-labelledby="staticBackdropLabel" 
             aria-hidden="true"
-            style="background: var(--color-secundary-opacity)"
+            style="background: var(--color-secundary-opacity);"
             
         >
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
-                <form action="?Pagina=Produtos&Ver&Editar&Id=<?php echo $ReturnProdutos['id_produto'] ?>" method="post">
+                <form 
+                    action="?Pagina=Produtos&Ver&Editar&Id=<?php echo $ReturnProdutos['id_produto'] ?>" 
+                    method="post"
+                    enctype="multipart/form-data"
+                >
                     <div class="modal-header">
                         <h5 class="modal-title" id="staticBackdropLabel">Editar o Produto: <?php echo $NomeProduto?> </h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -141,13 +155,24 @@
                                 <?php
                                     if($StatusProduto == 0){
                                     ?>
-                                        <label for="ativar<?php echo $ReturnProdutos['id_produto']?>">Ativar</label><br>
-                                        <input type="checkbox" name="ativar" id="ativar<?php echo $ReturnProdutos['id_produto']?>" value="1">
+                                    <div style="text-align:center">
+                                        <label for="ativar<?php echo $ReturnProdutos['id_produto']?>">Status: Ativar</label>
+                                        <input type="checkbox" name="ativar" id="ativar<?php echo $ReturnProdutos['id_produto']?>">
+                                    </div>
                                     <?php
                                     }else{
                                     ?>
-                                        <label for="ativar<?php echo $ReturnProdutos['id_produto']?>">Desativar</label><br>
-                                        <input type="checkbox" name="ativar" id="ativar<?php echo $ReturnProdutos['id_produto']?>" value="1">
+                                    <div style="text-align:center">
+                                        <label for="ativar<?php echo $ReturnProdutos['id_produto']?>">
+                                                <span style="font-size:1.3rem">Status: Desativar</span>
+                                            </label>
+                                            <input 
+                                                type="checkbox" 
+                                                name="ativar" 
+                                                id="ativar<?php echo $ReturnProdutos['id_produto']?>"
+                                                checked
+                                            >
+                                    </div>
                                     <?php
                                     }
                                 ?>
@@ -161,7 +186,7 @@
                                     required
                                     value="<?php echo $ReturnProdutos['qtd_produto']?>"
                                     id="qtd_produto<?php echo $ReturnProdutos['id_produto']?>"
-                                    name="qtd_produto<?php echo $ReturnProdutos['id_produto']?>"
+                                    name="qtd_produto"
                                 >
                             </div>
                         </div>
@@ -177,14 +202,14 @@
                                     required
                                     value="<?php echo $ReturnProdutos['titulo_produto']?>"
                                     id="titulo_produto<?php echo $ReturnProdutos['id_produto']?>"
-                                    name="titulo_produto<?php echo $ReturnProdutos['id_produto']?>"
+                                    name="titulo_produto"
                                 >
                             </div>
                             <!-- Marca -->
                             <div class="col-4">
                                 <label for="marca_produto<?php echo $ReturnProdutos['id_produto']?>" class="form-label form-label-lg">Marca:</label>
                                 <select 
-                                    name="marca_produto<?php echo $ReturnProdutos['id_produto']?>" 
+                                    name="marca_produto" 
                                     id="marca_produto<?php echo $ReturnProdutos['id_produto']?>" 
                                     class="form-control form-control-lg"
                                 >
@@ -217,7 +242,7 @@
                                     required
                                     value="<?php echo $ReturnProdutos['preco_produto']?>"
                                     id="preco_produto<?php echo $ReturnProdutos['id_produto']?>"
-                                    name="preco_produto<?php echo $ReturnProdutos['id_produto']?>"
+                                    name="preco_produto"
                                 >
                             </div>
                         </div>
@@ -245,6 +270,7 @@
                                     id="imagem_produto<?php echo $ReturnProdutos['id_produto']?>"
                                     class="form-control form-control-lg arquivo"
                                 >
+                                <input type="hidden" name="file_b" value="<?php echo $FotoProduto?>">
                                 <input 
                                     type="text" 
                                     name="file" 
@@ -272,12 +298,13 @@
                                     Descrição do Produto
                                 </label>
                                 <textarea 
-                                    name="descricao_produto<?php echo $ReturnProdutos['id_produto']?>" 
+                                    name="descricao_produto" 
                                     id="descricao_produto<?php echo $ReturnProdutos['id_produto']?>" 
                                     cols="30" 
                                     rows="16"
                                     class="form-control form-control-lg"
                                     placeholder="Digite a descrição do produto"
+                                    value=""
                                 ><?php echo $DescricaoProduto?></textarea>
                             </div>
                         </div>
@@ -294,8 +321,8 @@
         </div>
         </div>
         <?php
-
         }
+        
     }else{
         if(mysqli_error($connection)){
             echo "Erro: ".mysqli_error($connection);

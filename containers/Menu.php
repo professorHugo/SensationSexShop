@@ -21,7 +21,7 @@
     <?php if( $_GET['L'] == "All" && isset($_GET['H']) ){ echo 'class="nav-item active"'; }else{ echo 'class="nav-item"';}?>
     
     >
-        <a class="nav-link" href="?L=All&H">Todos</a>
+        <a class="nav-link" href="?L=Home">Todos</a>
     </li>
     <li 
     <?php if( $_GET['L'] == "Hot" ){ echo 'class="nav-item active"'; }else{ echo 'class="nav-item"';}?>
@@ -40,7 +40,7 @@
         if( mysqli_num_rows($ExeQrBuscarCategorias) > 0 ){
             while($ReturnCategorias = mysqli_fetch_assoc($ExeQrBuscarCategorias)){
             ?>
-            <a class="dropdown-item" href="#">
+            <a class="dropdown-item" href="?L=Categoria&C=<?php echo $ReturnCategorias['id_categoria'] ?>">
                 <?php echo $ReturnCategorias['nome_categoria'] ?>
             </a>
             <?php
@@ -57,7 +57,7 @@
     </li>
     
     </ul>
-    <form class="form-inline my-2 my-lg-0" action="?Q" method="get">
+    <form class="form-inline my-2 my-lg-0" action="?L=Buscar" method="post">
         <input 
             id="form-buscar" 
             class="form-control mr-sm-2" 

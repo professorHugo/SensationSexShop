@@ -17,7 +17,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Raleway:wght@400;700;900&family=Roboto:wght@400;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/CarousselBanner.css">
+    <?php include_once "containers/Favicon.php"?>
     <meta name="theme-color" content="#FF3399">
+    <!-- <meta http-equiv="refresh" content="0;http://sensationsexshop.com.br/catalogo"> -->
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -29,7 +31,19 @@
         <?php include_once "containers/CarousselBanner.php"?>
     </div>
     <div id="container" class="container-fluid">
-        <?php include_once "containers/Home.php"?>
+        <?php
+          if(isset($_GET['L'])){
+            $Pagina = $_GET['L'];
+          }else{
+            $Pagina = "Home";
+          }
+
+          switch($Pagina){
+            case $Pagina: include_once "Pages/".$Pagina."/index.php";break;
+            default: include_once "Pages/Home/index.php";
+          }
+          
+        ?>
     </div>
     
     <div class="clearfix" style="margin-top:25px"></div>

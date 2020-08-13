@@ -84,9 +84,23 @@ hr{
     border: 1px solid var(--cor-base-3);
 }
 
-@media (min-width: 990px){
+@media (min-width: 991px){
+    #container{
+        display: grid;
+        grid-template-columns: 3fr;
+        grid-template-rows: 1fr auto;
+        grid-template-areas: 
+            "titulo titulo titulo"
+            "item item item"
+        ;
+    }
+
+    .rotulo_sessao{
+        grid-area: titulo;
+    }
+
     .produto-item{
-        max-width: 30vw;
+        max-width: 29vw;
         margin-left: 1.7vw;
         font: 1rem Roboto!important;
         background: var(--background-default);

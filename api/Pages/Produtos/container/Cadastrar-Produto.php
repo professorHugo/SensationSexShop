@@ -1,13 +1,28 @@
 <?php
 if(isset($_GET['Item'])){
-    "<br>".$Fornecedor = $_POST['fornecedor'];
-    "<br>".$Categoria = $_POST['categoria'];
-    "<br>".$Titulo = $_POST['titulo_produto'];
-    "<br>".$Preco = $_POST['preco_produto'];
-    "<br>".$Imagem = $_FILES['imagem_produto']['name'];
-    "<br>".$Descricao = $_POST['descricao_produto'];
-    "<br>".$Marca = $_POST['marca_produto'];
-    
+?>
+<!-- <div
+    style="
+        position:absolute;
+        top:0; left:450px;
+        padding: 15px;
+        background: #fff; color: #000;
+        max-width: 450px;z-index:9999;
+        margin-left: 10px
+    "
+>
+<b>Informações do produto: </b> -->
+<?php
+    "<br>Fornecedor: ".$Fornecedor = $_POST['fornecedor'];
+    "<br>Categoria: ".$Categoria = $_POST['categoria'];
+    "<br>Nome do Produto: ".$Titulo = $_POST['titulo_produto'];
+    "<br>Preço do Produto: ".$Preco = $_POST['preco_produto'];
+    "<br>Arquivo de imagem: ".$Imagem = $_FILES['imagem_produto']['name'];
+    "<br>Texto do Produto: ".$Descricao = $_POST['descricao_produto'];
+    "<br>Marca do Produto: ".$Marca = $_POST['marca_produto'];
+?>
+<!-- </div> -->
+<?php
     //Upload da imagem
     include_once "Produtos/container/Upload.php";
     //CadastrarProduto
@@ -52,7 +67,7 @@ if(isset($_GET['Item'])){
             }
         }
     }else{
-            echo "<br>Erro: ".mysqli_error($connection);
+            "<br>Erro: ".mysqli_error($connection);
     }
 
     include_once "Produtos/container/Modal-Produto-Cadastrado.php";
