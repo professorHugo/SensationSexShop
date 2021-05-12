@@ -6,7 +6,7 @@
 /* * ***************************
   GERAR RESUMOS
  * *************************** */
-function Resumo($string, $words = '35') {
+function Resumo($string, $words = '500') {
     $string = strip_tags($string);
     $count = strlen($string);
 

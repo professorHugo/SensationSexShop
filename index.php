@@ -1,12 +1,24 @@
 <?php 
   require_once "api/config/Config.php";
 ?>
+<!-- Global site tag (gtag.js) - Google Ads: 591446998 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-591446998"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-591446998');
+</script>
+
+
 <!doctype html>
 <html lang="pt-br">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="google-site-verification" content="Pe7kkE5A_euEF5rLAUtEZhLiHAAbcQgynFgmtTSlpIU" />
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css" integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
     <title>Sensation Sexy Shop - Catálogo</title>

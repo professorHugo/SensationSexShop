@@ -30,7 +30,7 @@ while( $ResBanner2 = mysqli_fetch_assoc($ExeQrBuscarBanners2) ) {
     $IdBanner = $ResBanner2['id_banner'];
     $Arquivo = $ResBanner2['pasta_banner'] . "/" . $ResBanner2['arquivo_banner'];
     $AltText = $ResBanner2['alt_banner'];
-    $Title = $ResBanner2['title_banner'];
+    $Title = $ResBanner2['titulo_banner'];
 
     if( $IdBanner == 1 ){
         ?>
