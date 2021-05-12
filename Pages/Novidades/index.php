@@ -2,7 +2,7 @@
 
 <?php
 if( isset($_GET['L']) && $_GET['L'] == "Novidades" ){
-    $Hot = $_GET['C'];
+    // $Hot = $_GET['C'];
 
     "<br><pre>" .
         $QueryBuscarProdutosHot = "
@@ -25,6 +25,7 @@ if( isset($_GET['L']) && $_GET['L'] == "Novidades" ){
     
     if( mysqli_num_rows($ExeQrBuscarProdutosHot) > 0 ){
         while($ReturnProdutos = mysqli_fetch_assoc($ExeQrBuscarProdutosHot)){
+            "<br>ProdutoID: " . $IdProduto = $ReturnProdutos['id_produto'];
              "<br>Categoria: " . $NomeCategoria = $ReturnProdutos['nome_categoria'];
              "<br>Fornecedor: " . $NomeFornecedor = $ReturnProdutos['nome_fornecedor'];
              "<br>Produto: " . $NomeProduto = $ReturnProdutos['titulo_produto'];
@@ -72,7 +73,7 @@ if( isset($_GET['L']) && $_GET['L'] == "Novidades" ){
                     </div>
                     <div class="texto-bloco float-left">
                         <p>
-                            <?php echo Resumo($DescricaoProduto, 200)?>...
+                            <?php echo Resumo($DescricaoProduto, 40)?>...
                         </p>
                     </div>
                     <div class="texto-bloco float-left">
@@ -97,13 +98,20 @@ if( isset($_GET['L']) && $_GET['L'] == "Novidades" ){
                     }
                     $texto = "Olá, gostaria de saber mais sobre o produto *$NomeProduto*"
                     ?>
-                    <a href="https://api.whatsapp.com/send?phone=+55<?php echo $Telefone?>&text=<?php echo $texto?>" 
+                    <a href="?L=Produto&Id=<?php echo $IdProduto?>" 
+                        class="chamar-whatsapp"
+                        target="_self"
+                    >
+                        <i class="fa fa-info-circle"></i>
+                        Saber Mais
+                    </a>
+                    <!-- <a href="https://api.whatsapp.com/send?phone=+55<?php echo $Telefone?>&text=<?php echo $texto?>" 
                         class="chamar-whatsapp"
                         target="_blank"
                     >
                         <i class="fa fw fa-whatsapp"></i>
                         Saber Mais
-                    </a>
+                    </a> -->
                 </div>
             </div>
         <?php
