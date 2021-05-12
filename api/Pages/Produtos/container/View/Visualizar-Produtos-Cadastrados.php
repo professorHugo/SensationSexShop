@@ -7,6 +7,7 @@
 
     if($RowQrBuscarProdutos >= 1){
         while( $ReturnProdutos = mysqli_fetch_assoc($ExeQrBuscarProdutos) ){
+            "<br>ID: " . $IdProduto = $ReturnProdutos['id_produto'];
             "<br>Categoria: " . $NomeCategoria = $ReturnProdutos['nome_categoria'];
             "<br>Fornecedor: " . $NomeFornecedor = $ReturnProdutos['nome_fornecedor'];
             "<br>Produto: " . $NomeProduto = $ReturnProdutos['titulo_produto'];
@@ -16,6 +17,9 @@
             "<br>Preço: " . $PrecoProduto = $ReturnProdutos['preco_produto'];
             "<br>Quantidade: " . $QuantidadeProduto = $ReturnProdutos['qtd_produto'];
             "<br>Status: " . $StatusProduto = $ReturnProdutos['status_produto'];
+            "<br>Hot: " . $Hot = $ReturnProdutos['hot_produto'];
+            "<br>Novidade: " . $Novidade = $ReturnProdutos['novidade_produto'];
+            "<br>Conteúdo: " . $Conteudo = $ReturnProdutos['conteudo_produto'];
 
             ?>
         
@@ -249,7 +253,7 @@
                         <hr>
                         <!-- Linha 3 -->
                         <div class="row">
-                            <!-- Imagem -->
+                            <!-- Esquerda ( Apenas Imagem ) -->
                             <div class="col-6">
                                 <label
                                     for="imagem_produto<?php echo $ReturnProdutos['id_produto']?>" 
@@ -289,23 +293,119 @@
                                     value="SELECIONAR"
                                 >
                             </div>
-                            <!-- Descrição -->
+                            <!-- Direita (Descrição e Detalhes) -->
                             <div class="col-6">
-                                <label 
-                                    for="descricao_produto<?php echo $ReturnProdutos['id_produto']?>" 
-                                    class="form-label form-label-lg"
-                                >
-                                    Descrição do Produto
-                                </label>
-                                <textarea 
-                                    name="descricao_produto" 
-                                    id="descricao_produto<?php echo $ReturnProdutos['id_produto']?>" 
-                                    cols="30" 
-                                    rows="16"
-                                    class="form-control form-control-lg"
-                                    placeholder="Digite a descrição do produto"
-                                    value=""
-                                ><?php echo $DescricaoProduto?></textarea>
+                                <!-- Descrição -->
+                                <div style="height: 215px; background-color: var(--background-opacity)">
+                                    <label 
+                                        for="descricao_produto<?php echo $ReturnProdutos['id_produto']?>" 
+                                        class="form-label form-label-lg"
+                                    >
+                                        Descrição do Produto
+                                    </label>
+                                    <textarea 
+                                        name="descricao_produto" 
+                                        id="descricao_produto<?php echo $ReturnProdutos['id_produto']?>" 
+                                        cols="30"
+                                        rows="8"
+                                        class="form-control form-control-lg"
+                                        placeholder="Digite a descrição do produto"
+                                        value=""
+                                    ><?php echo $DescricaoProduto?></textarea>
+                                    <hr>
+                                </div>
+                                <!-- Detalhes -->
+                                <div>
+                                    <!-- Conteúdo da embalagem -->
+                                    <div class="col-6 float-left">
+                                        <label 
+                                            for="conteudo_produto<?php echo $ReturnProdutos['id_produto']?>" 
+                                            class="form-label form-label-lg"
+                                        >
+                                            Embalagem: 
+                                        </label>
+                                        <input type="text" 
+                                            name="conteudo_produto" 
+                                            id="conteudo_produto<?php echo $ReturnProdutos['id_produto']?>" 
+                                            cols="30" 
+                                            class="form-control form-control-lg"
+                                            placeholder="un/gr"
+                                            value="<?php if( $Conteudo != null){ echo $Conteudo; } ?>"
+                                        />
+                                    </div>
+                                    <!-- Ativação Hot -->
+                                    <div class="col-6 float-left">
+                                    <?php
+                                        if($Hot == 0) {
+                                        ?>
+                                        <div style="text-align:center;margin-top: 25px">
+                                            <label for="hot_produto<?php echo $IdProduto?>">
+                                                <span style="font-size:2rem">Hot &nbsp;</span>
+                                            </label>
+                                            <input type="checkbox" name="hot_produto" id="hot_produto<?php echo $IdProduto?>">
+                                        </div>
+                                        <?php
+                                        }else{
+                                        ?>
+                                        <div style="text-align:center;margin-top: 25px">
+                                            <label for="hot_produto<?php echo $IdProduto?>">
+                                                <span style="font-size:2rem">Hot &nbsp;</span>
+                                            </label>
+                                            <input 
+                                                type="checkbox" 
+                                                name="hot_produto" 
+                                                id="hot_produto<?php echo $IdProduto?>"
+                                                checked
+                                            >
+                                        </div>
+                                        <?php
+                                        }
+                                    ?>
+                                    </div>
+                                    <div class="clearfix"></div>
+
+                                    <div class="col-12">
+                                        <label for="novidade_produto<?php echo $ReturnProdutos['id_produto']?>" class="form-label form-label-lg">Novidade?</label>
+                                        <select 
+                                            name="novidade_produto" 
+                                            id="novidade_produto<?php echo $ReturnProdutos['id_produto']?>" 
+                                            class="form-control form-control-lg"
+                                        >
+                                            
+                                            <?php
+                                            $QueryBuscarNovidade = "SELECT * FROM tb_produtos WHERE id_produto = '$IdProduto'";
+                                            $ExeQrBuscarNovidade = mysqli_query($connection, $QueryBuscarNovidade);
+                                            while($ReturnNovidade = mysqli_fetch_assoc($ExeQrBuscarNovidade)){
+
+                                                if( $ReturnNovidade['novidade_produto'] == 0 ){
+                                                ?>
+                                                    <option value="<?php echo $ReturnNovidade['novidade_produto'] ?>">
+                                                        Não
+                                                    </option>
+                                                    <option value="1">
+                                                        Sim
+                                                    </option>
+                                                <?php
+                                                    
+                                                }else{
+                                                ?>
+                                                    <option value="<?php echo $ReturnNovidade['novidade_produto'] ?>">
+                                                        Sim
+                                                    </option>
+                                                    <option value="0">
+                                                        Não
+                                                    </option>
+                                                <?php
+                                                }
+                                            ?>
+                                                
+                                            <?php
+                                            }
+                                            ?>
+                                            
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

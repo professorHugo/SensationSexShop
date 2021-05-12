@@ -1,11 +1,27 @@
 <link rel="stylesheet" href="css/Home.css">
 
 <?php
-if( isset($_GET['L']) && $_GET['L'] == "Categoria" ){
-    $Categoria = $_GET['C'];
-
+if( $_GET['L'] == "Buscar" ){
+?>
+<div class="rotulo_sessao">
+    <h1>
+        <?php 
+            if( isset($_GET['L']) ){
+                echo $P = $_GET['L'] .": ". $_POST['Buscar'];
+            }else{
+                echo $P = "Produtos: ";
+            }
+            
+        ?>
+    </h1>
+    <hr>
+</div>
+<?php
+    $Buscar = $_POST['Buscar'];
+    "<br> Buscar o item: $Buscar";
+    
     "<br><pre>" .
-        $QueryBuscarProdutosCategoria = "
+        $QueryBuscarProdutosHot = "
     SELECT * FROM
         tb_produtos p
     INNER JOIN tb_categoria_produtos AS cat
@@ -17,46 +33,14 @@ if( isset($_GET['L']) && $_GET['L'] == "Categoria" ){
     INNER JOIN tb_fornecedores AS fornecedor
         ON p.fornecedor_produto = fornecedor.id_fornecedor
 
-    WHERE categoria_produto = $Categoria && status_produto = 1
+    WHERE status_produto = 1 && titulo_produto LIKE '%$Buscar%'
     ";
      "</pre>";
 
-    $ExeQrBuscarProdutosCategoria = mysqli_query($connection, $QueryBuscarProdutosCategoria);
+    $ExeQrBuscarProdutosHot = mysqli_query($connection, $QueryBuscarProdutosHot);
     
-    if( mysqli_num_rows($ExeQrBuscarProdutosCategoria) >=1 ){
-        ?>
-        <div class="rotulo_sessao">
-            <h1>
-                <?php 
-                    if( isset($_GET['L']) ){
-                        $Categoria = $_GET['C'];
-                        "<br><pre>" .
-                            $QueryBuscarCategoria = "
-                        SELECT * FROM
-                            tb_categoria_produtos
-                        WHERE id_categoria = $Categoria
-                        ";
-                        "</pre>";
-
-                        $ExeQrBuscarBuscarCategoria = mysqli_query($connection, $QueryBuscarCategoria);
-                        while( $ReturnCategorias = mysqli_fetch_assoc($ExeQrBuscarBuscarCategoria) ){
-                            $NomeCategoria = $ReturnCategorias['nome_categoria'];
-                        }
-                        
-                        echo $P = $_GET['L'] . ": " . $NomeCategoria;
-                    }else{
-                        echo $P = "Produtos: ";
-                    }
-                    
-                ?>
-            </h1>
-            <hr>
-        </div>
-        
-        <?php
-        
-
-        while($ReturnProdutos = mysqli_fetch_assoc($ExeQrBuscarProdutosCategoria)){
+    if( mysqli_num_rows($ExeQrBuscarProdutosHot) > 0 ){
+        while($ReturnProdutos = mysqli_fetch_assoc($ExeQrBuscarProdutosHot)){
              "<br>Categoria: " . $NomeCategoria = $ReturnProdutos['nome_categoria'];
              "<br>Fornecedor: " . $NomeFornecedor = $ReturnProdutos['nome_fornecedor'];
              "<br>Produto: " . $NomeProduto = $ReturnProdutos['titulo_produto'];
@@ -64,18 +48,16 @@ if( isset($_GET['L']) && $_GET['L'] == "Categoria" ){
              "<br>Foto: " . $FotoProduto = $ReturnProdutos['pasta_foto'] . "/" . $ReturnProdutos['arquivo_foto'];
              "<br>Descrição: " . $DescricaoProduto = $ReturnProdutos['descricao_produto'];
              "<br>Preço: " . $PrecoProduto = $ReturnProdutos['preco_produto'];
-             "<br>Quantidade: " . $ConteudoProduto = $ReturnProdutos['conteudo_produto'];
+             "<br>Quantidade: " . $QuantidadeProduto = $ReturnProdutos['qtd_produto'];
              "<br>Status: " . $StatusProduto = $ReturnProdutos['status_produto'];
-            "<br>Hot: " . $HotProduto = $ReturnProdutos['hot_produto'];
-
-
+             "<br>Hot: " . $HotProduto = $ReturnProdutos['hot_produto'];
         ?>
 
-            <!-- <div class="rotulo_sessao">
+            <div class="rotulo_sessao">
                 <h1>
                     <?php 
                         if( isset($_GET['L']) ){
-                            echo $P = $_GET['L'] . ": " . $NomeCategoria;
+                            echo $P = $_GET['L'];
                         }else{
                             echo $P = "Produtos: ";
                         }
@@ -83,7 +65,7 @@ if( isset($_GET['L']) && $_GET['L'] == "Categoria" ){
                     ?>
                 </h1>
                 <hr>
-            </div> -->
+            </div>
 
             <div class="produto-item">
                 <div class="col-12 topo-bloco">
@@ -100,18 +82,13 @@ if( isset($_GET['L']) && $_GET['L'] == "Categoria" ){
                         >
                         <?php
                             if( $HotProduto == 1 ){
-                            include "containers/Hot-Product.php";
+                                include "containers/Hot-Product.php";
                             }
                         ?>
                     </div>
                     <div class="texto-bloco float-left">
                         <p>
-                            <?php echo Resumo($DescricaoProduto, 200)?>...
-                        </p>
-                    </div>
-                    <div class="texto-bloco float-left">
-                        <p>
-                            Conteúdo da embalagem: <?php echo $ConteudoProduto ?>
+                            <?php echo Resumo($DescricaoProduto, 90)?>...
                         </p>
                     </div>
                 </div>
@@ -124,16 +101,11 @@ if( isset($_GET['L']) && $_GET['L'] == "Categoria" ){
                         R$ <?php echo $PrecoProduto?>
                     </p>
                     <?php
-                    $QueryBuscarContato = "SELECT * FROM tb_contato WHERE status_contato = '1'";
-                    $ExeQrBuscarContato = mysqli_query($connection, $QueryBuscarContato);
-                    while( $ReturnContato = mysqli_fetch_assoc($ExeQrBuscarContato) ){
-                        $Telefone = $ReturnContato['numero_contato'];
-                    }
-                    $texto = "Olá, gostaria de saber mais sobre o produto *$NomeProduto*"
+                    $texto = "Olá, gostaria de saber mais sobre o produto $NomeProduto"
                     ?>
-                    <a href="https://api.whatsapp.com/send?phone=+55<?php echo $Telefone?>&text=<?php echo $texto?>" 
+                    <a 
+                        href="https://api.whatsapp.com/send?phone=+5511994136441&text=<?php echo $texto?>" 
                         class="chamar-whatsapp"
-                        target="_blank"
                     >
                         <i class="fa fw fa-whatsapp"></i>
                         Saber Mais
@@ -148,21 +120,10 @@ if( isset($_GET['L']) && $_GET['L'] == "Categoria" ){
                 <h1>
                     <?php 
                         if( isset($_GET['L']) ){
-                            $Categoria = $_GET['C'];
-                            "<br><pre>" .
-                                $QueryBuscarCategoria = "
-                            SELECT * FROM
-                                tb_categoria_produtos
-                            WHERE id_categoria = $Categoria
-                            ";
-                            "</pre>";
-
-                            $ExeQrBuscarBuscarCategoria = mysqli_query($connection, $QueryBuscarCategoria);
-                            while( $ReturnCategorias = mysqli_fetch_assoc($ExeQrBuscarBuscarCategoria) ){
-                                $NomeCategoria = $ReturnCategorias['nome_categoria'];
-                            }
+                            $Buscar = $_POST['Buscar'];
+                                                      
                             
-                            echo $P = $_GET['L'] . ": " . $NomeCategoria;
+                            echo $P = $_GET['L'] . ": " . $Buscar;
                         }else{
                             echo $P = "Produtos: ";
                         }
@@ -171,7 +132,7 @@ if( isset($_GET['L']) && $_GET['L'] == "Categoria" ){
                 </h1>
                 <hr>
             </div>
-            <h5>Nenhum Produto encontrado para essa categoria</h5>
+            <h5>Nenhum Produto encontrado sua pesquisa</h5>
             <a href="?" style="font-size:1.3rem;color: var(--cor-base-2)">
                 <span>
                     <i class="fa fa-chevron-left" aria-hidden="true"></i>

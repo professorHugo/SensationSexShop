@@ -30,7 +30,7 @@ CREATE TABLE tb_categoria_produtos(
     id_categoria int not null primary key auto_increment,
     nome_categoria varchar(50) DEFAULT NULL
 )ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
--- INSERT INTO tb_categoria_fotos(nome_categoria)VALUES('Teste');
+
 -- INSERT INTO tb_categoria_produtos (id_categoria, nome_categoria) VALUES
 -- (1, 'Gel Funcional'),
 -- (2, 'Gel ComestÃ­vel'),
@@ -60,23 +60,6 @@ CREATE TABLE tb_marcas(
     id_marca int not null PRIMARY KEY auto_increment,
     nome_marca VARCHAR(50) DEFAULT NULL
 )ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
--- INSERT INTO tb_marcas (id_marca, nome_marca) VALUES
--- (1, 'Soft Love'),
--- (2, 'Pessini'),
--- (3, 'INTT'),
--- (4, 'Hot Flowers'),
--- (5, 'Secret Love'),
--- (6, 'Garji'),
--- (7, 'Pepper Blend'),
--- (8, 'La Pimenta'),
--- (9, 'CIMED'),
--- (10, 'Noru'),
--- (11, 'FeitiÃ§os'),
--- (12, 'Loka SensaÃ§Ã£o'),
--- (13, 'Pau Brasil'),
--- (14, 'Sexy Fantasy'),
--- (15, 'YouVibe'),
--- (16, 'VipMix');
 
 CREATE TABLE tb_produtos(
     id_produto int not null PRIMARY KEY auto_increment,
@@ -88,9 +71,15 @@ CREATE TABLE tb_produtos(
     descricao_produto VARCHAR(500) DEFAULT NULL,
     preco_produto VARCHAR(10) DEFAULT NULL,
     qtd_produto int DEFAULT 0,
+
+
     status_produto int DEFAULT 0,
+
     hot_produto int DEFAULT 0,
+
     novidade_produto int DEFAULT 0,
+
+    conteudo_produto VARCHAR(50) DEFAULT NULL,
 
 
     INDEX(categoria_produto),
@@ -111,10 +100,32 @@ CREATE TABLE tb_banners(
     ativo_banner int DEFAULT 0
 )ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
 
-----------------------------
---  Inserção de Dados Dev --
---   Comentar para Prod   --
-----------------------------
+CREATE TABLE tb_contato(
+    id_contato int not null primary key auto_increment,
+    numero_contato varchar(50) DEFAULT NULL,
+    status_contato int DEFAULT 1
+)ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
+INSERT into tb_contato(numero_contato,status_contato)VALUES('1199162-7033',1);
+
+
+INSERT INTO tb_marcas (id_marca, nome_marca) VALUES
+(1, 'Soft Love'),
+(2, 'Pessini'),
+(3, 'INTT'),
+(4, 'Hot Flowers'),
+(5, 'Secret Love'),
+(6, 'Garji'),
+(7, 'Pepper Blend'),
+(8, 'La Pimenta'),
+(9, 'CIMED'),
+(10, 'Noru'),
+(11, 'FeitiÃ§os'),
+(12, 'Loka SensaÃ§Ã£o'),
+(13, 'Pau Brasil'),
+(14, 'Sexy Fantasy'),
+(15, 'YouVibe'),
+(16, 'VipMix');
+
 INSERT INTO tb_categoria_produtos (
     id_categoria, 
     nome_categoria
@@ -136,7 +147,6 @@ INSERT INTO tb_fotos (
     arquivo_foto
 )
 VALUES
-(1, NULL, NULL, 'image.jpg'),
 (2, 1, 'Produtos', '21912.jpg'),
 (3, 1, 'Produtos', '8662.png'),
 (4, 1, 'Produtos', '9478.png'),
@@ -156,7 +166,7 @@ INSERT INTO tb_produtos (
     preco_produto,
     qtd_produto, 
     status_produto, 
-    hot
+    hot_produto
 )
 VALUES
 (1, 1, 'Facilit', 1, 2, 'ContÃ©m 3 unidades. Ã‰ uma bolinha funcional anestÃ©sica 4x1 sendo as funÃ§Ãµes, AnestÃ©sico, Lubrificante, Vasodilatador, Cicatrizante.', '12,20', 1, 1, 0),

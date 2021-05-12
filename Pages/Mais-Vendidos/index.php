@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="css/Home.css">
 
 <?php
-if( isset($_GET['L']) && $_GET['L'] == "Hot" ){
+if( isset($_GET['L']) && $_GET['L'] == "Mais-Vendidos" ){
     $Hot = $_GET['C'];
 
     "<br><pre>" .
@@ -32,16 +32,17 @@ if( isset($_GET['L']) && $_GET['L'] == "Hot" ){
              "<br>Foto: " . $FotoProduto = $ReturnProdutos['pasta_foto'] . "/" . $ReturnProdutos['arquivo_foto'];
              "<br>Descrição: " . $DescricaoProduto = $ReturnProdutos['descricao_produto'];
              "<br>Preço: " . $PrecoProduto = $ReturnProdutos['preco_produto'];
-             "<br>Quantidade: " . $QuantidadeProduto = $ReturnProdutos['qtd_produto'];
+             "<br>Quantidade: " . $ConteudoProduto = $ReturnProdutos['conteudo_produto'];
              "<br>Status: " . $StatusProduto = $ReturnProdutos['status_produto'];
-
+             "<br>Hot: " . $HotProduto = $ReturnProdutos['hot_produto'];
         ?>
 
             <div class="rotulo_sessao">
                 <h1>
                     <?php 
                         if( isset($_GET['L']) ){
-                            echo $P = $_GET['L'] . ": " . $NomeCategoria;
+                            $P = $_GET['L'];
+                            echo substr_replace("$P","Mais Vendidos",0);
                         }else{
                             echo $P = "Produtos: ";
                         }
@@ -64,10 +65,20 @@ if( isset($_GET['L']) && $_GET['L'] == "Hot" ){
                         class="img-fluid"
                         title="<?php echo $NomeProduto?>"
                         >
+                        <?php
+                            if( $HotProduto == 1 ){
+                            include "containers/Hot-Product.php";
+                            }
+                        ?>
                     </div>
                     <div class="texto-bloco float-left">
                         <p>
-                            <?php echo Resumo($DescricaoProduto, 90)?>...
+                            <?php echo Resumo($DescricaoProduto, 200)?>...
+                        </p>
+                    </div>
+                    <div class="texto-bloco float-left">
+                        <p>
+                            Conteúdo da embalagem: <?php echo $ConteudoProduto ?>
                         </p>
                     </div>
                 </div>
@@ -80,11 +91,16 @@ if( isset($_GET['L']) && $_GET['L'] == "Hot" ){
                         R$ <?php echo $PrecoProduto?>
                     </p>
                     <?php
-                    $texto = "Olá, gostaria de saber mais sobre o produto $NomeProduto"
+                    $QueryBuscarContato = "SELECT * FROM tb_contato WHERE status_contato = '1'";
+                    $ExeQrBuscarContato = mysqli_query($connection, $QueryBuscarContato);
+                    while( $ReturnContato = mysqli_fetch_assoc($ExeQrBuscarContato) ){
+                        $Telefone = $ReturnContato['numero_contato'];
+                    }
+                    $texto = "Olá, gostaria de saber mais sobre o produto *$NomeProduto*"
                     ?>
-                    <a 
-                        href="https://api.whatsapp.com/send?phone=+5511988205155&text=<?php echo $texto?>" 
+                    <a href="https://api.whatsapp.com/send?phone=+55<?php echo $Telefone?>&text=<?php echo $texto?>" 
                         class="chamar-whatsapp"
+                        target="_blank"
                     >
                         <i class="fa fw fa-whatsapp"></i>
                         Saber Mais

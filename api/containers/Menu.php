@@ -8,25 +8,25 @@
 <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
     <li 
-        <?php if( isset($_GET['L']) &&  $_GET['L'] == "Home" ){ echo 'class="nav-item active"'; }else{ echo 'class="nav-item"';}?>
+        <?php if( $_GET['L'] == "Home" ){ echo 'class="nav-item active"'; }else{ echo 'class="nav-item"';}?>
     >
         <a class="nav-link" href="?L=Home">Inicio <span class="sr-only">(current)</span></a>
     </li>
     <li 
-    <?php if( isset($_GET['L'])  &&  $_GET['L'] == "Novidades" ){ echo 'class="nav-item active"'; }else{ echo 'class="nav-item"';}?>
+    <?php if( $_GET['L'] == "Novidades" ){ echo 'class="nav-item active"'; }else{ echo 'class="nav-item"';}?>
     >
         <a class="nav-link" href="?L=Novidades">Novidades</a>
     </li>
     <li 
-    <?php if( isset($_GET['L'])  &&  $_GET['L'] == "All" && isset($_GET['H']) ){ echo 'class="nav-item active"'; }else{ echo 'class="nav-item"';}?>
+    <?php if( $_GET['L'] == "All" && isset($_GET['H']) ){ echo 'class="nav-item active"'; }else{ echo 'class="nav-item"';}?>
     
     >
         <a class="nav-link" href="?L=Home">Todos</a>
     </li>
     <li 
-    <?php if( isset($_GET['L'])  &&  $_GET['L'] == "Mais-Vendidos" ){ echo 'class="nav-item active"'; }else{ echo 'class="nav-item"';}?>
+    <?php if( $_GET['L'] == "Mais-Vendidos" ){ echo 'class="nav-item active"'; }else{ echo 'class="nav-item"';}?>
     >
-        <a class="nav-link" href="?L=Mais-Vendidos">Mais comprados</a>
+        <a class="nav-link" href="?L=Mais-Vendidos">Hot (Mais comprados)</a>
     </li>
     <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

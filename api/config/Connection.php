@@ -11,7 +11,7 @@ if($connection){
     return $connection;
     echo "Conectado";
 }else{
-    echo "Erro";
+    echo "Erro".mysqli_error();
 }
 
 /* Deployed 

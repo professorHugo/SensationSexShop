@@ -1,7 +1,5 @@
 <div id="asside-menu">
     <div class="content">
-
-    
         <!-- Default dropright button -->
         <div class="btn-group dropright">
             <a type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -54,6 +52,17 @@
             <div class="dropdown-menu bloco-dropdown">
                 <a href="?Pagina=Produtos&Ver">Ver Produtos</a>
                 <a href="?Pagina=Produtos&Cadastrar">Cadastrar Produtos</a>
+            </div>
+        </div>
+
+        <!-- Default dropright button -->
+        <div class="btn-group dropright">
+            <a type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-phone-square" aria-hidden="true"></i>
+                Contato
+            </a>
+            <div class="dropdown-menu bloco-dropdown">
+                <a href="?Pagina=Contato">Dados para contato</a>
             </div>
         </div>
     </div>

@@ -15,7 +15,7 @@ hr{
     padding-top: 1rem;
 }
 .produto-item .topo-bloco{
-    font-size: 2.5rem;
+    font-size: 3rem;
     border-bottom: 1px solid var(--pink);
 }
 .produto-item .topo-bloco p{
@@ -35,9 +35,6 @@ hr{
     margin-left:15vw;
     align-items: center;
     justify-content: center;
-}
-.conteudo-bloco .img-bloco img{
-    max-height: 300px;
 }
 .texto-bloco{
     width: 85vw;
@@ -63,7 +60,6 @@ hr{
     margin-top: 1rem;
     margin-bottom: .5rem;
     padding-bottom: 1rem;
-    
 }
 
 .rodape .valor-produto{
@@ -142,6 +138,6 @@ hr{
         font-size: 1.5rem;
     }
     .produto-item .conteudo-bloco > .texto-bloco + .texto-bloco p {
-        font-size: 1.2rem;
+        font-size: 2rem;
     }
 }

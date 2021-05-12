@@ -10,7 +10,7 @@
         <?php
             $QueryBuscarQtd1 = "SELECT * FROM tb_categoria_produtos";
             $ExeQrBsucarQtd1 = mysqli_query($connection, $QueryBuscarQtd1);
-            if($ExeQrBsucarQtd1 > 0){
+            if($ExeQrBsucarQtd1 >= 1){
                 echo strval(mysqli_num_rows($ExeQrBsucarQtd1));
             }else{ echo "0";}
         ?>

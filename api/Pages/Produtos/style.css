@@ -104,6 +104,11 @@
     margin: 0 .55vw 60px;
     transition: .2s;
     padding: 5px;
+    font-size: 1.2rem;
+}
+#exibir-produtos .produto-item .topo-item{
+    font-size: 1.2rem;
+    min-height: 70px;
 }
 #exibir-produtos .produto-item .conteudo-bloco {
     min-height: 150px;

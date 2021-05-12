@@ -1,13 +1,13 @@
 <!-- <div style="
     position: absolute; 
-    right:15px; 
+    left:5px; 
     background: #000; 
     color: #fff;
     z-index:9999;
     padding: 2rem;
     max-width:550px;
-    overflow-y:scroll;
-    top:0 "
+    overflow-y: auto;
+    top:15px "
 > -->
 
 <?php
@@ -27,6 +27,14 @@ if($_POST['ativar'] == true){
  "<br>Preço: " . $Preco = $_POST['preco_produto'];
  "<br>Descrição: " . $Descricao = $_POST['descricao_produto'];
  "<br>Campo de Img: " . $CampoImg = 'imagem_produto'.$IdProduto;
+ "<br>Embalagem: " . $ConteudoProduto = $_POST['conteudo_produto'];
+ if( $_POST['hot_produto'] == true ){
+    "<br>HOT: " . $HotProduto = 1;
+ }else{
+    "<br>HOT: " . $HotProduto = 0;
+ }
+ "<br>Novidade: " . $NovidadeProduto = $_POST['novidade_produto'];
+
 
 //Upload da imagem nova
 if( !empty($_FILES[$CampoImg]['name']) ){
@@ -62,12 +70,16 @@ $QueryUpdateDadosProdutos = "
         descricao_produto = '$Descricao',
         preco_produto = '$Preco',
         qtd_produto = '$Qtd',
-        status_produto = '$Ativacao'
+        status_produto = '$Ativacao',
+        hot_produto = '$HotProduto',
+        novidade_produto = '$NovidadeProduto',
+        conteudo_produto = '$ConteudoProduto'
     WHERE id_produto = '$IdProduto'
 ";
  "</pre>";
 $ExeQrUpdateDadosProdutos = mysqli_query($connection, $QueryUpdateDadosProdutos);
 if( $ExeQrUpdateDadosProdutos ){
+    "<br>Produto editado.";
 ?>
 <script type="text/javascript">
     $(function(){
@@ -76,47 +88,49 @@ if( $ExeQrUpdateDadosProdutos ){
 </script>
 
 <!-- Modal Produto Editado-->
-<div 
-    class="modal fade show" 
-    id="modalLoggedIn" 
-    data-keyboard="false" 
-    tabindex="-1" 
-    role="dialog" 
-    aria-labelledby="staticBackdropLabel" 
-    aria-hidden="true" 
-    style="
-        display:block;
-        padding-top:15%;
-        background: var(--color-background-opacity2);
-    "
->
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">Cadastro de Produto</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-        <div class="modal-body">
-            <div class="col-md-12 text-center">
-                <img src="../img/ajax-loader.gif">
+    <div 
+        class="modal fade show" 
+        id="modalLoggedIn" 
+        data-keyboard="false" 
+        tabindex="-1" 
+        role="dialog" 
+        aria-labelledby="staticBackdropLabel" 
+        aria-hidden="true" 
+        style="
+            display:block;
+            padding-top:15%;
+            background: var(--color-background-opacity2);
+        "
+    >
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Cadastro de Produto</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
+            <div class="modal-body">
                 <div class="col-md-12 text-center">
-                    <p>Editando o Produto...</p>
-                    <p>Produto: <?php echo "$Nome" ?></p>
-                    <p>Você será redirecionado</p>
+                    <img src="../img/ajax-loader.gif">
+                    </div>
+                    <div class="col-md-12 text-center">
+                        <p>Editando o Produto...</p>
+                        <p>Produto: <?php echo "$Nome" ?></p>
+                        <p>Você será redirecionado</p>
+                    </div>
                 </div>
+            <div class="modal-footer">
+                <a href="?Pagina=Produtos&Ver" class="btn btn-form">Ver Produtos</a>
+                <meta http-equiv="refresh" content="2;?Pagina=Produtos&Ver">
             </div>
-        <div class="modal-footer">
-            <a href="?Pagina=Produtos&Ver" class="btn btn-form">Ver Produtos</a>
-            <meta http-equiv="refresh" content="2;?Pagina=Produtos&Ver">
-        </div>
+            </div>
         </div>
     </div>
-</div>
 
 <?php    
+}else {
+    "<br>Erro: ".mysqli_error($connection);
 }
 ?>
 </div>

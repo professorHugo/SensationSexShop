@@ -1,0 +1,8 @@
+#Banner{
+    width: 100%;
+    display: flex;
+    padding: 0;
+}
+#Banner img{
+    width: 100%;
+}

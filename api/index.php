@@ -1,6 +1,6 @@
 <?php
 session_start();
-session_destroy();
+// session_destroy();
 require_once "config/Config.php";
 //Tentar Fazer Login
 if(isset($_GET['Login'])){
