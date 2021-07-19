@@ -81,6 +81,8 @@ CREATE TABLE tb_produtos(
 
     conteudo_produto VARCHAR(50) DEFAULT NULL,
 
+    contador_acesso varchar(50) DEFAULT NULL,
+
 
     INDEX(categoria_produto),
     INDEX(foto_produto),

@@ -1,0 +1,5 @@
+{
+  "editor.tabSize": 2,
+  "php.validate.executablePath": "c:/wamp/bin/php/php5.6.40/php-win.exe",
+  "workbench.iconTheme": "material-icon-theme"
+}
